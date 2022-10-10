@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <section class="vh-100 gradient-custom">
+        <div class="container py-4 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+                            <h2 class="fw-bold mb-2 text-uppercase">Connexion</h2>
+                            <p class="text-white-50 mb-1">Veuillez entrer votre e-mail et votre mot de passe !</p>
+                            <form action="{{ path('app_login') }}" method="post">
+                                <div class="form-outline form-white mb-1">
+                                    <label for="username"></label>
+                                    <input class="form-control form-control-lg" placeholder="E-mail" type="text" id="username" name="_username" value="{{ last_username }}"/>
+                                </div>
+                                <div>
+                                    <label for="password"></label>
+                                    <input class="form-control form-control-lg mb-3" placeholder="Mot de passe" type="password" id="password" name="_password"/>
+                                </div>
+                                <input type="hidden" name="_csrf_token"
+                                       value="{{ csrf_token('authenticate') }}"
+                                >
+                                {# If you want to control the URL the user is redirected to on success
+                                    <input type="hidden" name="_target_path" value="/account"/> #}
+                                <button class="btn btn-outline-light btn-lg px-5 mb-3" type="submit">Connexion</button>
+                            </form>
+                            <div>
+                                <p class="mb-0">
+                                    Vous ne possédez pas de compte? <a href="/register" class="text-white-50 fw-bold">Inscrivez-vous.</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
