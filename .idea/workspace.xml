@@ -167,6 +167,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="2Fw9Qn8sfC7YFUky3GAfLTZszeV" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -205,7 +206,7 @@
       <option name="presentableId" value="Default" />
       <updated>1665392266090</updated>
       <workItem from="1665392267993" duration="599000" />
-      <workItem from="1665393346113" duration="8517000" />
+      <workItem from="1665393346113" duration="9571000" />
     </task>
     <servers />
   </component>
