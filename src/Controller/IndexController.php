@@ -8,6 +8,7 @@ use App\Form\AdvFormType;
 use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -20,15 +21,9 @@ class IndexController extends AbstractController
     {
         $repoAdv = $em->getRepository(Advertissement::class);
         $ads = $repoAdv->findAll();
-        $repoUser = $em->getRepository(User::class);
-        $id = $this->getUser()->getId();
-        $user = $repoUser->findById($id);
-
-
         return $this->render('index/index.html.twig', [
             'controller_name' => '🛠 JMN & Co',
             'adv' => $ads,
-            'user' => $user,
         ]);
     }
 
@@ -84,19 +79,11 @@ class IndexController extends AbstractController
         ]);
     }
 
-    #[Route('/MonCV', name: 'app_CV')]
-    public function monCV(): Response
-    {
-        return $this->render('users/moncv.html.twig', [
-            'controller_name' => '🛠 Mon CV',
-        ]);
-    }
-
     #[Route('/aboutUs', name: 'app_aboutUs')]
     public function aboutUs(): Response
     {
         return $this->render('frontFooter/aboutUs.html.twig', [
-            'controller_name' => '🛠 Nous',
+            'controller_name' => '🛠 À propos de nous',
         ]);
     }
 
@@ -136,5 +123,19 @@ class IndexController extends AbstractController
             'newAdvForm' => $form->createView(),
             'controller_name' => '🛠 Nouvelle Offre',
         ]);
+    }
+
+    #[Route('/enregistrerOffre', name: 'enregistrerOffre')]
+    public function enregistrerOffre(Request $request, EntityManagerInterface $em){
+        $repoUsr = $em->getRepository(User::class);
+        $repoAd = $em->getRepository(Advertissement::class);
+        $userMail = $this->getUser()->getUserIdentifier();
+        $user = $repoUsr->findOneBy(array('email' => $userMail));
+        $idAd = $request->request->get('id');
+        $ad = $repoAd->findOneBy(array('id' => $idAd));
+        $user->addIdAd($ad);
+        $em->persist($user);
+        $em->flush();
+        return new JsonResponse(['success' => 'Ok']);
     }
 }

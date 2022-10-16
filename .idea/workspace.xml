@@ -4,26 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f5dc612-5bde-426a-b235-e20f15a2d092" name="Changes" comment="bouton Voir l'annonce fonctionnel">
+    <list default="true" id="1f5dc612-5bde-426a-b235-e20f15a2d092" name="Changes" comment="Ajout d'offre dans mes offres">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/IndexController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Advertissement.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Advertissement.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.php.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.preload.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.preload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainer.xml.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainerCompiler.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainerCompiler.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainerDeprecations.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/App_KernelDevDebugContainerDeprecations.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/doctrine/orm/Proxies/__CG__AppEntityUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/doctrine/orm/Proxies/__CG__AppEntityUser.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/url_generating_routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/url_generating_routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/url_generating_routes.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/url_generating_routes.php.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/url_matching_routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/url_matching_routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/url_matching_routes.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/url_matching_routes.php.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/da/da6bb9f13610fd4f32daea31c2f198d2.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/da/da6bb9f13610fd4f32daea31c2f198d2.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,13 +23,6 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -190,8 +172,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/uid" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-uuid" />
       <path value="$PROJECT_DIR$/vendor/easycorp/easyadmin-bundle" />
-      <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
-      <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-pack" />
     </include_path>
   </component>
   <component name="ProjectId" id="2Fw9Qn8sfC7YFUky3GAfLTZszeV" />
@@ -205,13 +185,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/Augustrain/Piscines web/onlineResume",
+    "last_opened_file_path": "/home/Augustrain/Piscines web/T-WEB-501-LIL-5-1-jobboard-augustin.hazard",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "proofread",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -244,9 +223,8 @@
       <workItem from="1665493792225" duration="5153000" />
       <workItem from="1665560033780" duration="4268000" />
       <workItem from="1665674297251" duration="3154000" />
-      <workItem from="1665741066226" duration="2572000" />
-      <workItem from="1665849461808" duration="2307000" />
-      <workItem from="1665854064601" duration="12931000" />
+      <workItem from="1665741066226" duration="10448000" />
+      <workItem from="1665928759571" duration="8942000" />
     </task>
     <task id="LOCAL-00001" summary="offres">
       <created>1665668588091</created>
@@ -255,12 +233,12 @@
       <option name="project" value="LOCAL" />
       <updated>1665668588091</updated>
     </task>
-    <task id="LOCAL-00002" summary="bouton Voir l'annonce fonctionnel">
-      <created>1665850872898</created>
+    <task id="LOCAL-00002" summary="Ajout d'offre dans mes offres">
+      <created>1665938387993</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1665850872898</updated>
+      <updated>1665938387993</updated>
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
@@ -281,11 +259,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="offres" />
-    <MESSAGE value="bouton Voir l'annonce fonctionnel" />
-    <option name="LAST_COMMIT_MESSAGE" value="bouton Voir l'annonce fonctionnel" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+    <MESSAGE value="Ajout d'offre dans mes offres" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout d'offre dans mes offres" />
   </component>
 </project>

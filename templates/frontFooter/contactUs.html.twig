@@ -10,15 +10,19 @@
                             <h2 class="fw-bold mb-2 text-uppercase mb-4">Nous contacter</h2>
                                 <form method="">
                                     <div class="form-outline form-white mb-4">
-                                        <label for="pseudo"></label>
-                                        <input class="form-control form-control-lg" type="text" name="name" placeholder="Pseudo">
+                                        <label for="pseudo">
+                                            <input class="form-control form-control-lg" type="text" name="name" placeholder="Pseudo">
+                                        </label>
                                     </div>
                                     <div class="form-outline form-white mb-4">
-                                        <label for="email"></label>
-                                        <input class="form-control form-control-lg" type="email" name="email" placeholder="E-mail">
+                                        <label for="email">
+                                            <input class="form-control form-control-lg" type="email" name="email" placeholder="E-mail">
+                                        </label>
                                     </div>
                                     <div class="form-outline form-white mb-4" data-validate="Please Type Your Message">
-                                        <textarea class="form-control form-control-lg" name="message" placeholder="Votre message..."></textarea>
+                                        <label>
+                                            <textarea class="form-control form-control-lg" name="message" placeholder="Votre message..."></textarea>
+                                        </label>
                                     </div>
                                     <div class="container-contact100-form-btn">
                                         <button class="btn btn-outline-light btn-lg px-5 mb-3">
@@ -31,6 +35,5 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 {% endblock %}

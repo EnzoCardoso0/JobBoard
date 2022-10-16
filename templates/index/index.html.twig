@@ -1,17 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% set count = 0 %}
-{% set ad = adv.0%}
 {% block body %}
     <div class="container mt-5 mb-3">
-            {% if is_granted('ROLE_COMPAGNIE') %}
-                <button class="btn btn-outline-secondary mb-3"><a class="text-secondary" href="/nouvelleOffre">Créer une nouvel annonce</a></button>
-                {% endif %}
-            <div class="row">
+        {% if is_granted('ROLE_COMPAGNIE') %}
+            <button class="btn btn-outline-secondary mb-3"><a class="text-secondary" href="/nouvelleOffre">Créer une nouvel annonce</a></button>
+        {% endif %}
+        <div class="row">
 
             {% for ad in adv %}
-
-                {% set ad = ad %}
                 {% block javascripts %}
                 <script>
                     $(document).ready(function () {
@@ -25,17 +22,17 @@
                 <script>
                     $(document).ready(function (){
                         $("#enregistrer{{ count }}").on("click", function (){
+                            let idAd = {{ ad.id }};
                             $.ajax({
                                 url: '/enregistrerOffre',
                                 type: 'POST',
-                                data: {{ ad }},
+                                data: {id : idAd},
                                 success: function (response) {
-                                    console.log(response)
+                                    console.log(response.success)
                                     console.log()
                                 },
                                 error: function (response){
-                                    console.log('ca marche pas {{ count }} {{ ad }}')
-                                    console.log(response);
+                                    alert('Vous êtes surement déconnécté');
                                 }
                             });
                         });
@@ -58,7 +55,7 @@
                             <div id="div{{ count }}"></div>
                             <div class="mt-5">
                                 <button class="btn btn-dark" id="{{ count }}" value="{{ ad.jobDesc }}">Voir l'annonce</button>
-                                <button class="btn btn-dark" id="enregistrer{{ count }}" value="{{ ad }}" style="display: none">Enregistrer l'annonce</button>
+                                <button class="btn btn-dark" id="enregistrer{{ count }}" value="{{ ad.id }}" style="display: none">Enregistrer l'annonce</button>
                             </div>
                         </div>
                     </div>
