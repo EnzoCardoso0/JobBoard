@@ -1,121 +1,44 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="container mt-5 mb-3">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card p-3 mb-2">
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex flex-row align-items-center">
-                            <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
-                            <div class="ms-2 c-details">
-                                <h6 class="mb-0">Genomegraphics</h6> <span>29 / 09 / 2022</span>
+    {% if adv %}
+        <div class="container mt-4 mb-3">
+            <div class="mb-4">
+                <h2>Voici nos offres :</h2>
+            </div>
+            {% if is_granted('ROLE_COMPAGNIE') %}
+                <button class="btn btn-outline-secondary mb-3"><a class="text-secondary" href="/nouvelleOffre">Créer une nouvel annonce</a></button>
+                {% endif %}
+            <div class="row">
+
+            {% for ad in adv %}
+                <div class="col-md-4">
+                    <div class="card p-3 mb-2">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex flex-row align-items-center">
+                                <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
+                                <div class="ms-2 c-details">
+                                    <h6 class="mb-0">{{ ad.idOwner.name }}</h6> <span>{{ ad.date }}</span>
+                                </div>
                             </div>
+                            <div class="badge"> <span>Job</span> </div>
                         </div>
-                        <div class="badge"> <span>Job</span> </div>
-                    </div>
-                    <div class="mt-5">
-                        <h3 class="heading">Senior Product<br>Designer-Singapore</h3>
                         <div class="mt-5">
-                            <button class="btn btn-dark">Voir l'annonce</button>
+                            <h3 class="heading">{{ ad.job }}</h3>
+                            <div class="mt-5">
+                                <button class="btn btn-dark">Voir l'annonce</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card p-3 mb-2">
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex flex-row align-items-center">
-                            <div class="icon"> <i class="bx bxl-dribbble"></i> </div>
-                            <div class="ms-2 c-details">
-                                <h6 class="mb-0">Dribbble</h6> <span>29 / 09 / 2022</span>
-                            </div>
-                        </div>
-                        <div class="badge"> <span>Job</span> </div>
-                    </div>
-                    <div class="mt-5">
-                        <h3 class="heading">Junior Product<br>Designer-Singapore</h3>
-                        <div class="mt-5">
-                            <button class="btn btn-dark">Voir l'annonce</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card p-3 mb-2">
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex flex-row align-items-center">
-                            <div class="icon"> <i class="bx bxl-reddit"></i> </div>
-                            <div class="ms-2 c-details">
-                                <h6 class="mb-0">Reddit</h6> <span>29 / 09 / 2022</span>
-                            </div>
-                        </div>
-                        <div class="badge"> <span>Job</span> </div>
-                    </div>
-                    <div class="mt-5">
-                        <h3 class="heading">Software Architect <br>Java - USA</h3>
-                        <div class="mt-5">
-                            <button class="btn btn-dark">Voir l'annonce</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card p-3 mb-2">
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex flex-row align-items-center">
-                            <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
-                            <div class="ms-2 c-details">
-                                <h6 class="mb-0">Mailchimp</h6> <span>29 / 09 / 2022</span>
-                            </div>
-                        </div>
-                        <div class="badge"> <span>Job</span> </div>
-                    </div>
-                    <div class="mt-5">
-                        <h3 class="heading">Senior Product<br>Designer-Singapore</h3>
-                        <div class="mt-5">
-                            <button class="btn btn-dark">Voir l'annonce</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card p-3 mb-2">
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex flex-row align-items-center">
-                            <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
-                            <div class="ms-2 c-details">
-                                <h6 class="mb-0">Dribbble</h6> <span>29 / 09 / 2022</span>
-                            </div>
-                        </div>
-                        <div class="badge"> <span>Job</span> </div>
-                    </div>
-                    <div class="mt-5">
-                        <h3 class="heading">Senior Product<br>Designer-Singapore</h3>
-                        <div class="mt-5">
-                            <button class="btn btn-dark">Voir l'annonce</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card p-3 mb-2">
-                    <div class="d-flex justify-content-between">
-                        <div class="d-flex flex-row align-items-center">
-                            <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
-                            <div class="ms-2 c-details">
-                                <h6 class="mb-0">Reddit</h6> <span>29 / 09 / 2022</span>
-                            </div>
-                        </div>
-                        <div class="badge"> <span>Job</span> </div>
-                    </div>
-                    <div class="mt-5">
-                        <h3 class="heading">Senior Product<br>Designer-Singapore</h3>
-                        <div class="mt-5">
-                            <button class="btn btn-dark">Voir l'annonce</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
+    {% else %}
+        <div class="container mt-5 mb-5">
+            <h2>Nous n'avons pas d'offre pour le moment.</h2>
+            {% if is_granted('ROLE_COMPAGNIE') %}
+                <button class="btn btn-outline-secondary mb-3"><a class="text-secondary" href="/nouvelleOffre">Créer une nouvel annonce</a></button>
+            {% endif %}
+        </div>
+    {% endif %}
 {% endblock %}

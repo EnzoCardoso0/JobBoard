@@ -1,0 +1,30 @@
+{% extends '/base.html.twig' %}
+
+{% block body %}
+    {% if is_granted('ROLE_COMPAGNIE') %}
+        <div class="container py-4 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+                            <h2 class="fw-bold mb-2 text-uppercase">Nouvelle Offre</h2>
+                            {{ form(newAdvForm) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container py-4 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+                            <h2 class="fw-bold mb-2 text-uppercase">Vous n'avez pas accès a cette page :-(</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

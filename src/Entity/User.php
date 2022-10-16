@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -10,7 +12,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+#[UniqueEntity(fields: ['email'], message: 'Un compte est déjà associé à cette e-mail')]
+#[ApiResource]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -25,16 +28,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = [];
 
     #[ORM\Column(length: 40)]
-    private string $lastname;
-
-    #[ORM\Column(length: 40)]
-    private string $firstname;
+    private string $name;
 
     #[ORM\Column(length: 5)]
     private string $cp;
 
     #[ORM\Column(length: 60)]
     private string $adress;
+
+    #[ORM\Column(length: 10)]
+    private string $tel;
+
+    #[ORM\Column]
+    private bool $isCompagny = true;
+
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Advertissement $id_ad = null;
+
+    #[ORM\OneToMany(mappedBy: 'id_owner', targetEntity: Advertissement::class)]
+    private Collection $myAds;
 
     /**
      * @var string The hashed password
@@ -58,6 +71,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function getTel(): ?string
+    {
+        return $this->tel;
+    }
+
+    public function setTel(string $tel): self
+    {
+        $this->tel = $tel;
+
+        return $this;
+    }
+
 
     /**
      * A visual identifier that represents this user.
@@ -88,26 +114,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getLastName(): string
+    public function getName(): string
     {
-        return $this->lastname;
+        return $this->name;
     }
 
-    public function setLastName(string $lastname): self
+    public function setName(string $name): self
     {
-        $this->lastname = $lastname;
-
-        return $this;
-    }
-
-    public function getFirstName(): string
-    {
-        return $this->firstname;
-    }
-
-    public function setFirstName(string $firstname): self
-    {
-        $this->firstname = $firstname;
+        $this->name = $name;
 
         return $this;
     }
@@ -158,5 +172,50 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getAdvertisements(): Collection
+    {
+        return $this->advertisement;
+    }
+
+    public function setAdvertisement(Collection $advertissement)
+    {
+        $this->advertisement = $advertissement;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getMyAds(): Collection
+    {
+        return $this->myAds;
+    }
+
+    /**
+     * @param Collection $myAds
+     */
+    public function setMyAds(Collection $myAds): void
+    {
+        $this->myAds = $myAds;
+    }
+
+    /**
+     * @param bool $isCompagny
+     */
+    public function setIsCompagny(bool $isCompagny): void
+    {
+        $this->isCompagny = $isCompagny;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsCompagny(): bool
+    {
+        return $this->isCompagny;
     }
 }

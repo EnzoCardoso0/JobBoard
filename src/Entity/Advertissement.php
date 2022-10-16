@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\AdvertissementRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AdvertissementRepository::class)]
@@ -13,11 +14,21 @@ class Advertissement
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 100)]
     private ?string $job = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 500, nullable: true)]
     private ?string $job_desc = null;
+
+    #[ORM\Column(length: 20)]
+    private ?string $date = null;
+
+    #[ORM\OneToMany(mappedBy: 'id_ad', targetEntity: User::class)]
+    private Collection $users;
+
+    #[ORM\ManyToOne(inversedBy: 'myAds')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $id_owner;
 
     public function getId(): ?int
     {
@@ -47,4 +58,65 @@ class Advertissement
 
         return $this;
     }
+
+    public function getDate(): ?string
+    {
+        return $this->date;
+    }
+
+    public function setDate(string $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * @return User|null
+     */
+    public function getIdU(): ?Compagnies
+    {
+        return $this->id_u;
+    }
+
+    /**
+     * @param User|null $id_u
+     */
+    public function setIdU(?User $id_u): void
+    {
+        $this->id_u = $id_u;
+    }
+
+    /**
+     * @return User|null
+     */
+    public function getIdOwner(): ?User
+    {
+        return $this->id_owner;
+    }
+
+    /**
+     * @param User|null $id_owner
+     */
+    public function setIdOwner(?User $id_owner): void
+    {
+        $this->id_owner = $id_owner;
+    }
+
+//    /**
+//     * @return string
+//     */
+//    public function getRelease()
+//    {
+//        return $this->release;
+//    }
+//
+//    /**
+//     * @param string $release
+//     */
+//    public function setRelease($release): void
+//    {
+//        $this->release = $release;
+//    }
+
 }

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -18,20 +19,27 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('firstname', TextType::class, [
-                'label' => ' ',
-                'attr' => ['class' => 'form-control form-control-lg',
-                    'placeholder' => 'Prénom']
+            ->add('isCompagny', ChoiceType::class, [
+                'label' => 'Êtes vous une entreprise ?',
+                'choices'  => [
+                    'Oui' => true,
+                    'Non' => false,
+                ],
             ])
-            ->add('lastname', TextType::class, [
+            ->add('name', TextType::class, [
                 'label' => ' ',
                 'attr' => ['class' => 'form-control form-control-lg',
-                    'placeholder' => 'Nom']
+                    'placeholder' => "Nom Prénom / Nom de l'entreprise"]
+            ])
+            ->add('tel', TextType::class, [
+                'label' => ' ',
+                'attr' => ['class' => 'form-control form-control-lg',
+                    'placeholder' => 'Téléphone']
             ])
             ->add('email', EmailType::class, [
                 'label' => ' ',
                 'attr' => ['class' => 'form-control form-control-lg',
-                    'placeholder' => 'Email']
+                    'placeholder' => 'E-mail']
             ])
             ->add('cp', TextType::class, [
                 'label' => ' ',
