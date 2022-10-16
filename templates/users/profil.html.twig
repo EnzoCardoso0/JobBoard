@@ -5,11 +5,11 @@
         {% for user in users %}
             <div class="page-content page-container mb-4" id="page-content">
                 <div class="container d-flex justify-content-center">
-                    <div class="col-xl-6 col-md-12 mt-3">
+                    <div class="col-xl-6 col-md-12" >
                         <div class="card user-card-full" style="border-radius: 1rem;">
                             <div class="bg-dark d-flex justify-content-center" style="border-radius: 1rem;">
-                                <div class="col-sm-4 bg-c-lite-green user-profile">
-                                    <div class="card-block text-center text-white mb-3 ">
+                                <div class="col-sm-4 bg-c-lite-green user-profile ">
+                                    <div class="card-block text-center text-white mb-3">
                                         <div class="mt-3 mb-3">
                                             <img width="110px" src="https://www.clipartmax.com/png/small/33-331596_job-profiles-chef-avatar.png" class="rounded-circle" alt="User-Profile-Image">
                                         </div>
@@ -31,12 +31,16 @@
                                             <h6 class="text-muted f-w-400">{{ user.tel }}</h6>
                                         </div>
                                     </div>
-                                    <h6 class="mt-3">Adresse : </h6>
+                                    <h6 class="mt-3">Adresse : {{ user.adress }}</h6>
                                     <hr>
                                     <div class="row">
-                                        <div class="col-sm-6 mb-2">
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600">Ville</p>
                                             <h6 class="text-muted f-w-400">Lille {{ user.cp }}</h6>
-                                            <h6 class="text-muted f-w-400">{{ user.adress }}</h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600">Mon CV</p>
+                                            <h6 class="text-muted f-w-400">Lien</h6>
                                         </div>
                                     </div>
                                 </div>

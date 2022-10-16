@@ -1,10 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     {% if adv %}
-        <div class="container mt-4 mb-3">
-            <div class="mb-4">
-                <h2>Voici nos offres :</h2>
-            </div>
+        <div class="container mt-5 mb-3">
+            <h2>Voici nos offres :</h2>
             {% if is_granted('ROLE_COMPAGNIE') %}
                 <button class="btn btn-outline-secondary mb-3"><a class="text-secondary" href="/nouvelleOffre">Créer une nouvel annonce</a></button>
                 {% endif %}
