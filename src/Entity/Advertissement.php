@@ -23,8 +23,9 @@ class Advertissement
     #[ORM\Column(length: 20)]
     private ?string $date = null;
 
-    #[ORM\OneToMany(mappedBy: 'id_ad', targetEntity: User::class)]
-    private Collection $users;
+    #[ORM\ManyToOne(inversedBy: 'advertisements')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?User $id_u = null;
 
     #[ORM\ManyToOne(inversedBy: 'myAds')]
     #[ORM\JoinColumn(nullable: false)]
@@ -103,20 +104,20 @@ class Advertissement
         $this->id_owner = $id_owner;
     }
 
-//    /**
-//     * @return string
-//     */
-//    public function getRelease()
-//    {
-//        return $this->release;
-//    }
-//
-//    /**
-//     * @param string $release
-//     */
-//    public function setRelease($release): void
-//    {
-//        $this->release = $release;
-//    }
+    /**
+     * @return string
+     */
+    public function getRelease()
+    {
+        return $this->release;
+    }
+
+    /**
+     * @param string $release
+     */
+    public function setRelease($release): void
+    {
+        $this->release = $release;
+    }
 
 }

@@ -1,14 +1,47 @@
 {% extends 'base.html.twig' %}
+
+{% set count = 0 %}
+{% set ad = adv.0%}
 {% block body %}
-    {% if adv %}
-        <div class="container mt-5 mb-3">
-            <h2>Voici nos offres :</h2>
+    <div class="container mt-5 mb-3">
             {% if is_granted('ROLE_COMPAGNIE') %}
                 <button class="btn btn-outline-secondary mb-3"><a class="text-secondary" href="/nouvelleOffre">Créer une nouvel annonce</a></button>
                 {% endif %}
             <div class="row">
 
             {% for ad in adv %}
+
+                {% set ad = ad %}
+                {% block javascripts %}
+                <script>
+                    $(document).ready(function () {
+                        $('#{{ count }}').on("click", function (){
+                            document.getElementById("div{{ count }}").innerHTML = document.getElementById("{{ count }}").value;
+                            $("#{{ count }}").hide();
+                            $("#enregistrer{{ count }}").show();
+                        });
+                    });
+                </script>
+                <script>
+                    $(document).ready(function (){
+                        $("#enregistrer{{ count }}").on("click", function (){
+                            $.ajax({
+                                url: '/enregistrerOffre',
+                                type: 'POST',
+                                data: {{ ad }},
+                                success: function (response) {
+                                    console.log(response)
+                                    console.log()
+                                },
+                                error: function (response){
+                                    console.log('ca marche pas {{ count }} {{ ad }}')
+                                    console.log(response);
+                                }
+                            });
+                        });
+                    })
+                </script>
+                {% endblock %}
                 <div class="col-md-4">
                     <div class="card p-3 mb-2">
                         <div class="d-flex justify-content-between">
@@ -22,21 +55,17 @@
                         </div>
                         <div class="mt-5">
                             <h3 class="heading">{{ ad.job }}</h3>
+                            <div id="div{{ count }}"></div>
                             <div class="mt-5">
-                                <button class="btn btn-dark">Voir l'annonce</button>
+                                <button class="btn btn-dark" id="{{ count }}" value="{{ ad.jobDesc }}">Voir l'annonce</button>
+                                <button class="btn btn-dark" id="enregistrer{{ count }}" value="{{ ad }}" style="display: none">Enregistrer l'annonce</button>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                {% set count = count + 1 %}
             {% endfor %}
         </div>
     </div>
-    {% else %}
-        <div class="container mt-5 mb-5">
-            <h2>Nous n'avons pas d'offre pour le moment.</h2>
-            {% if is_granted('ROLE_COMPAGNIE') %}
-                <button class="btn btn-outline-secondary mb-3"><a class="text-secondary" href="/nouvelleOffre">Créer une nouvel annonce</a></button>
-            {% endif %}
-        </div>
-    {% endif %}
 {% endblock %}

@@ -42,9 +42,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private bool $isCompagny = true;
 
-    #[ORM\ManyToOne(inversedBy: 'users')]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?Advertissement $id_ad = null;
+    #[ORM\OneToMany(mappedBy: 'users', targetEntity: Advertissement::class)]
+    private ?Collection $advertisements = null;
 
     #[ORM\OneToMany(mappedBy: 'id_owner', targetEntity: Advertissement::class)]
     private Collection $myAds;
@@ -177,19 +176,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return Collection
      */
-    public function getAdvertisements(): Collection
-    {
-        return $this->advertisement;
-    }
-
-    public function setAdvertisement(Collection $advertissement)
-    {
-        $this->advertisement = $advertissement;
-    }
-
-    /**
-     * @return Collection
-     */
     public function getMyAds(): Collection
     {
         return $this->myAds;
@@ -217,5 +203,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getIsCompagny(): bool
     {
         return $this->isCompagny;
+    }
+
+    /**
+     * @return Collection|null
+     */
+    public function getAdvertisements(): ?Collection
+    {
+        return $this->advertisements;
+    }
+
+    /**
+     * @param Collection|null $advertisements
+     */
+    public function setAdvertisements(?Collection $advertisements): void
+    {
+        $this->advertisements = $advertisements;
+    }
+
+    public function addAvertisement(?Collection $advertisement):void {
+        $this->advertisements .= $advertisement;
     }
 }

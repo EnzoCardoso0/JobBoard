@@ -20,9 +20,15 @@ class IndexController extends AbstractController
     {
         $repoAdv = $em->getRepository(Advertissement::class);
         $ads = $repoAdv->findAll();
+        $repoUser = $em->getRepository(User::class);
+        $id = $this->getUser()->getId();
+        $user = $repoUser->findById($id);
+
+
         return $this->render('index/index.html.twig', [
             'controller_name' => '🛠 JMN & Co',
             'adv' => $ads,
+            'user' => $user,
         ]);
     }
 
@@ -78,11 +84,19 @@ class IndexController extends AbstractController
         ]);
     }
 
+    #[Route('/MonCV', name: 'app_CV')]
+    public function monCV(): Response
+    {
+        return $this->render('users/moncv.html.twig', [
+            'controller_name' => '🛠 Mon CV',
+        ]);
+    }
+
     #[Route('/aboutUs', name: 'app_aboutUs')]
     public function aboutUs(): Response
     {
         return $this->render('frontFooter/aboutUs.html.twig', [
-            'controller_name' => '🛠 À propos de nous',
+            'controller_name' => '🛠 Nous',
         ]);
     }
 
